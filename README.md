@@ -303,11 +303,11 @@ Try a ready-made source, adapt its JavaScript, or add a focused prompt to your A
 
 | Tool | Download | Editable source |
 | --- | --- | --- |
-| Keep a mnemonic, example or reminder with a lookup | [Lookup Notes](sources/definer-source-lookup-notes.json) | [JavaScript](src/scripts/lookup-notes.js) |
-| Prepare a reference to the page you are reading | [Page Citation](sources/definer-source-page-citation.json) | [JavaScript](src/scripts/page-citation.js) |
-| Convert length, mass and temperature | [Unit Converter](sources/definer-source-unit-converter.json) | [JavaScript](src/scripts/unit-converter.js) |
-| Adapt a small English-dictionary API integration | [Dictionary API](sources/definer-source-dictionary-api.json) | [JavaScript](src/scripts/dictionary-api.js) |
-| Inspect lookup context when developing a source | [Context Inspector](sources/definer-source-context-inspector.json) | [JavaScript](src/scripts/context-inspector.js) |
+| Keep a mnemonic, example or reminder with a lookup | [Lookup Notes](sources/definer-source-lookup-notes.json) | [TypeScript](src/scripts/lookup-notes.ts) |
+| Prepare a reference to the page you are reading | [Page Citation](sources/definer-source-page-citation.json) | [TypeScript](src/scripts/page-citation.ts) |
+| Convert length, mass and temperature | [Unit Converter](sources/definer-source-unit-converter.json) | [TypeScript](src/scripts/unit-converter.ts) |
+| Adapt a small English-dictionary API integration | [Dictionary API](sources/definer-source-dictionary-api.json) | [TypeScript](src/scripts/dictionary-api.ts) |
+| Inspect lookup context when developing a source | [Context Inspector](sources/definer-source-context-inspector.json) | [TypeScript](src/scripts/context-inspector.ts) |
 
 Download a source JSON file, then open **Definer Options → Sources → New source → Constructor** and choose the file. Review the imported Script before enabling it. Script is experimental; available source and Recipe limits still apply. [Source import guide](https://lumetrium.com/definer/wiki/sources/import-export/)
 

@@ -1,6 +1,6 @@
 {
   "name": "definer-customizations",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Scripts and prompts for use with Definer.",
   "private": true,
   "type": "module",
@@ -9,9 +9,16 @@
   "homepage": "https://lumetrium.com/definer/",
   "repository": "https://github.com/lumetrium/definer.git",
   "scripts": {
-    "build": "node scripts/catalog-cli.mjs build",
-    "check": "node scripts/catalog-cli.mjs check",
-    "test": "node --test tests/*.test.mjs"
+    "build": "node scripts/catalog-cli.ts build",
+    "check": "node scripts/catalog-cli.ts check",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test tests/*.test.ts"
   },
-  "engines": { "node": ">=22" }
+  "engines": {
+    "node": "22.23.x"
+  },
+  "devDependencies": {
+    "@types/node": "22.7.4",
+    "typescript": "5.7.3"
+  }
 }

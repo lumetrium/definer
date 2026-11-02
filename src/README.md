@@ -4,7 +4,7 @@ Editable files for the sources and prompts in this catalog.
 
 | Folder | Contents |
 | --- | --- |
-| [scripts](scripts/README.md) | JavaScript programs for Definer Script sources. |
+| [scripts](scripts/README.md) | TypeScript programs that build into Definer Script sources. |
 | [prompts](prompts/README.md) | Liquid templates for Definer AI prompts. |
 | [recipes](recipes/README.md) | The Recipe included with Lookup Notes. |
 

@@ -1,3 +1,5 @@
+import type { DictionaryEntry } from './dictionary-api.types.ts'
+
 const query = definer.lookup.query.trim()
 const saved = definer.result.getData()
 
@@ -15,14 +17,14 @@ definer.output.setCss(`
 	.dictionary-result__definition { line-height: 1.55; }
 `)
 
-const heading = document.querySelector('.dictionary-result h1')
-const status = document.querySelector('.dictionary-result__status')
-const definition = document.querySelector('.dictionary-result__definition')
+const heading = document.querySelector<HTMLElement>('.dictionary-result h1')!
+const status = document.querySelector<HTMLElement>('.dictionary-result__status')!
+const definition = document.querySelector<HTMLElement>('.dictionary-result__definition')!
 heading.textContent = query
 
 try {
 	const loadedFromSaved = saved.query === query && Array.isArray(saved.entries)
-	let entries = loadedFromSaved ? saved.entries : null
+	let entries = loadedFromSaved ? saved.entries as DictionaryEntry[] : null
 	if (!Array.isArray(entries)) {
 		const endpoint =
 			`https://api.dictionaryapi.dev/api/v2/entries/en/` +
@@ -32,7 +34,7 @@ try {
 			throw new Error(`Dictionary request failed (${response.status})`)
 		}
 
-		entries = await response.json()
+		entries = await response.json() as DictionaryEntry[]
 		definer.result.setData({ query, entries })
 	}
 

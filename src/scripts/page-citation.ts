@@ -29,13 +29,13 @@ definer.output.setCss(`
 	}
 `)
 
-const output = document.querySelector('.citation-builder pre')
-const showFormat = (format) => {
+const output = document.querySelector<HTMLPreElement>('.citation-builder pre')!
+const showFormat = (format: keyof typeof formats) => {
 	output.textContent = formats[format]
 }
 
-for (const button of document.querySelectorAll('.citation-builder button')) {
-	button.addEventListener('click', () => showFormat(button.dataset.format))
+for (const button of document.querySelectorAll<HTMLButtonElement>('.citation-builder button')) {
+	button.addEventListener('click', () => showFormat(button.dataset.format as keyof typeof formats))
 }
 
 showFormat('plain')

@@ -17,8 +17,8 @@ definer.output.setCss(`
 	.converter__result { display: block; margin: 8px 0; font-size: 1.7em; }
 `)
 
-const input = document.querySelector('.converter__input')
-const result = document.querySelector('.converter__result')
+const input = document.querySelector<HTMLElement>('.converter__input')!
+const result = document.querySelector<HTMLElement>('.converter__result')!
 input.textContent = query
 
 if (!match) {
@@ -27,12 +27,12 @@ if (!match) {
 	const value = Number(match[1])
 	const from = match[2].toLowerCase().replace('°', '')
 	const to = match[3].toLowerCase().replace('°', '')
-	const groups = [
+	const groups: Record<string, number>[] = [
 		{ mm: 0.001, cm: 0.01, m: 1, km: 1000, in: 0.0254, ft: 0.3048, yd: 0.9144, mi: 1609.344 },
 		{ g: 0.001, kg: 1, oz: 0.028349523125, lb: 0.45359237 },
 	]
 	const group = groups.find((candidate) => from in candidate && to in candidate)
-	let converted
+	let converted: number | undefined
 
 	if (group) {
 		converted = (value * group[from]) / group[to]
@@ -42,6 +42,6 @@ if (!match) {
 	}
 
 	result.textContent = Number.isFinite(converted)
-		? `${Number(converted.toFixed(6))} ${to === 'c' || to === 'f' ? `°${to.toUpperCase()}` : to}`
+		? `${Number(converted!.toFixed(6))} ${to === 'c' || to === 'f' ? `°${to.toUpperCase()}` : to}`
 		: 'Those units cannot be converted to each other.'
 }

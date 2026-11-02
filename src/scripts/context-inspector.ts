@@ -28,7 +28,7 @@ definer.output.setCss(`
 	}
 `)
 
-document.querySelector('.context-inspector pre').textContent = JSON.stringify(
+document.querySelector<HTMLPreElement>('.context-inspector pre')!.textContent = JSON.stringify(
 	context,
 	null,
 	2,

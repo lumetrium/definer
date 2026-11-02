@@ -23,11 +23,11 @@ definer.output.setCss(`
 	.lookup-notes [role="status"] { opacity: 0.7; }
 `)
 
-const note = document.querySelector('.lookup-notes textarea')
-const status = document.querySelector('.lookup-notes [role="status"]')
+const note = document.querySelector<HTMLTextAreaElement>('.lookup-notes textarea')!
+const status = document.querySelector<HTMLElement>('.lookup-notes [role="status"]')!
 note.value = typeof saved.note === 'string' ? saved.note : ''
 
-document.querySelector('.lookup-notes button').addEventListener('click', () => {
+document.querySelector<HTMLButtonElement>('.lookup-notes button')!.addEventListener('click', () => {
 	definer.result.patchData({
 		note: note.value,
 		updatedAt: new Date().toISOString(),
