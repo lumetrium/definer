@@ -1,0 +1,31 @@
+{
+  "manifest": {
+    "schema": "definer-source-bundle",
+    "version": 1,
+    "appId": "definer",
+    "appVersion": "2.1.5",
+    "exportedAt": "2026-11-01T00:00:00.000Z"
+  },
+  "sources": [
+    {
+      "source": {
+        "type": "script",
+        "role": 1,
+        "disabled": true,
+        "behavior": {
+          "prefetch": false,
+          "untrusted": true
+        },
+        "display": {
+          "name": "Page Citation",
+          "desc": "Prepare a plain-text or Markdown reference from available page metadata."
+        },
+        "options": {
+          "code": "const title = definer.lookup.getVariable('page_title') || 'Untitled page'\nconst url = definer.lookup.getVariable('url') || 'URL unavailable'\nconst site = definer.lookup.getVariable('page_og_site_name')\nconst modified = definer.lookup.getVariable('page_last_modified')\nconst accessed = new Intl.DateTimeFormat('en', { dateStyle: 'medium' }).format(new Date())\nconst source = site ? `${title}. ${site}.` : `${title}.`\nconst detail = modified ? `Last modified ${modified}.` : `Accessed ${accessed}.`\nconst formats = {\n\tplain: `${source} ${detail} ${url}`,\n\tmarkdown: `[${title.replaceAll('[', '\\\\[').replaceAll(']', '\\\\]')}](${url})`,\n}\n\ndefiner.output.setHtml(`\n\t<section class=\"citation-builder\">\n\t\t<div>\n\t\t\t<button type=\"button\" data-format=\"plain\">Plain text</button>\n\t\t\t<button type=\"button\" data-format=\"markdown\">Markdown</button>\n\t\t</div>\n\t\t<pre></pre>\n\t</section>\n`)\ndefiner.output.setCss(`\n\t.citation-builder { padding: 18px; }\n\t.citation-builder div { display: flex; gap: 8px; }\n\t.citation-builder button { padding: 7px 12px; cursor: pointer; }\n\t.citation-builder pre {\n\t\tpadding: 12px; white-space: pre-wrap; user-select: text;\n\t\tborder-radius: 8px; background: ${definer.theme.rgba('text', 0.06)};\n\t}\n`)\n\nconst output = document.querySelector('.citation-builder pre')\nconst showFormat = (format) => {\n\toutput.textContent = formats[format]\n}\n\nfor (const button of document.querySelectorAll('.citation-builder button')) {\n\tbutton.addEventListener('click', () => showFormat(button.dataset.format))\n}\n\nshowFormat('plain')\n"
+        }
+      },
+      "routines": [],
+      "recipes": []
+    }
+  ]
+}

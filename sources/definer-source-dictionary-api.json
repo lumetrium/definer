@@ -1,0 +1,31 @@
+{
+  "manifest": {
+    "schema": "definer-source-bundle",
+    "version": 1,
+    "appId": "definer",
+    "appVersion": "2.1.5",
+    "exportedAt": "2026-11-01T00:00:00.000Z"
+  },
+  "sources": [
+    {
+      "source": {
+        "type": "script",
+        "role": 1,
+        "disabled": true,
+        "behavior": {
+          "prefetch": false,
+          "untrusted": true
+        },
+        "display": {
+          "name": "Dictionary API",
+          "desc": "A small English-definition integration to inspect and adapt to another API."
+        },
+        "options": {
+          "code": "const query = definer.lookup.query.trim()\nconst saved = definer.result.getData()\n\ndefiner.output.setHtml(`\n\t<article class=\"dictionary-result\">\n\t\t<h1></h1>\n\t\t<p class=\"dictionary-result__status\">Loading definition…</p>\n\t\t<p class=\"dictionary-result__definition\"></p>\n\t</article>\n`)\ndefiner.output.setCss(`\n\t.dictionary-result { padding: 18px; }\n\t.dictionary-result h1 { margin: 0 0 8px; }\n\t.dictionary-result__status { opacity: 0.65; }\n\t.dictionary-result__definition { line-height: 1.55; }\n`)\n\nconst heading = document.querySelector('.dictionary-result h1')\nconst status = document.querySelector('.dictionary-result__status')\nconst definition = document.querySelector('.dictionary-result__definition')\nheading.textContent = query\n\ntry {\n\tconst loadedFromSaved = saved.query === query && Array.isArray(saved.entries)\n\tlet entries = loadedFromSaved ? saved.entries : null\n\tif (!Array.isArray(entries)) {\n\t\tconst endpoint =\n\t\t\t`https://api.dictionaryapi.dev/api/v2/entries/en/` +\n\t\t\tencodeURIComponent(query)\n\t\tconst response = await fetch(endpoint)\n\t\tif (!response.ok) {\n\t\t\tthrow new Error(`Dictionary request failed (${response.status})`)\n\t\t}\n\n\t\tentries = await response.json()\n\t\tdefiner.result.setData({ query, entries })\n\t}\n\n\tconst firstDefinition = entries?.[0]?.meanings?.[0]?.definitions?.[0]?.definition\n\tstatus.textContent = loadedFromSaved ? 'Loaded from saved data' : ''\n\tdefinition.textContent = firstDefinition ?? 'No definition was returned.'\n} catch (error) {\n\tstatus.textContent = 'Could not load this definition.'\n\tdefinition.textContent =\n\t\terror instanceof Error ? error.message : String(error)\n}\n"
+        }
+      },
+      "routines": [],
+      "recipes": []
+    }
+  ]
+}

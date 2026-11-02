@@ -1,0 +1,23 @@
+name: Source or catalog problem
+description: Report a broken source, Script, or prompt from this repository.
+body:
+  - type: input
+    id: source
+    attributes:
+      label: Source or catalog file
+      description: Include its name or a link to the file.
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Definer version, browser, and operating system
+    validations:
+      required: true
+  - type: textarea
+    id: example
+    attributes:
+      label: Example query and result
+      description: Include the result language and steps to reproduce. Use a public or invented example.
+    validations:
+      required: true

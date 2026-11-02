@@ -1,0 +1,18 @@
+name: Feature request
+description: Suggest an improvement to Definer.
+body:
+  - type: textarea
+    id: task
+    attributes:
+      label: What would you like to do?
+      description: Describe the situation and what would help.
+    validations:
+      required: true
+  - type: textarea
+    id: current
+    attributes:
+      label: How do you handle it today?
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggested improvement

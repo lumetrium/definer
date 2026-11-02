@@ -1,0 +1,31 @@
+{
+  "manifest": {
+    "schema": "definer-source-bundle",
+    "version": 1,
+    "appId": "definer",
+    "appVersion": "2.1.5",
+    "exportedAt": "2026-11-01T00:00:00.000Z"
+  },
+  "sources": [
+    {
+      "source": {
+        "type": "script",
+        "role": 1,
+        "disabled": true,
+        "behavior": {
+          "prefetch": false,
+          "untrusted": true
+        },
+        "display": {
+          "name": "Context Inspector",
+          "desc": "Inspect the context available to a lookup when developing a source or reproducing an issue."
+        },
+        "options": {
+          "code": "const pageText = definer.lookup.getVariable('page_text')\nconst context = {\n\tquery: definer.lookup.query,\n\tlanguage: definer.lookup.language,\n\turl: definer.lookup.getVariable('url') ?? null,\n\tpageTitle: definer.lookup.getVariable('page_title') ?? null,\n\tsentence: definer.lookup.getVariable('sentence') ?? null,\n\tparagraph: definer.lookup.getVariable('paragraph') ?? null,\n\tpageTextPreview:\n\t\ttypeof pageText === 'string' ? pageText.slice(0, 500) : null,\n}\n\ndefiner.output.setHtml(`\n\t<section class=\"context-inspector\">\n\t\t<h1>Lookup context</h1>\n\t\t<pre></pre>\n\t</section>\n`)\ndefiner.output.setCss(`\n\t.context-inspector { padding: 16px; }\n\t.context-inspector h1 { margin-top: 0; }\n\t.context-inspector pre {\n\t\tpadding: 12px;\n\t\toverflow: auto;\n\t\twhite-space: pre-wrap;\n\t\tborder-radius: 8px;\n\t\tbackground: ${definer.theme.rgba('text', 0.06)};\n\t}\n`)\n\ndocument.querySelector('.context-inspector pre').textContent = JSON.stringify(\n\tcontext,\n\tnull,\n\t2,\n)\n"
+        }
+      },
+      "routines": [],
+      "recipes": []
+    }
+  ]
+}

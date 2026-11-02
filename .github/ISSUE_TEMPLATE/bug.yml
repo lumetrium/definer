@@ -1,0 +1,30 @@
+name: Bug report
+description: Report a problem with Definer.
+body:
+  - type: input
+    id: version
+    attributes:
+      label: Definer version
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Browser and operating system
+      placeholder: For example, Firefox on Windows, or Definer Desktop on Linux
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Include a public page or a small example when possible.
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: Expected and actual result
+      description: Screenshots can help. Remove private text and account details before sharing.
+    validations:
+      required: true

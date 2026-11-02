@@ -1,0 +1,100 @@
+{
+  "version": 1,
+  "testedVersion": "2.1.5",
+  "items": [
+    {
+      "id": "lookup-notes",
+      "kind": "script",
+      "category": "learning",
+      "name": "Lookup Notes",
+      "description": "Keep a mnemonic, example, or reminder with one lookup result, or save it to a Collection with the included Recipe.",
+      "source": "src/scripts/lookup-notes.js",
+      "file": "sources/definer-source-lookup-notes.json",
+      "recipe": "src/recipes/lookup-note.json",
+      "exampleQuery": "curiosity",
+      "network": false,
+      "guide": "https://lumetrium.com/definer/wiki/sources/script/catalog/lookup-notes"
+    },
+    {
+      "id": "page-citation",
+      "kind": "script",
+      "category": "research",
+      "name": "Page Citation",
+      "description": "Prepare a plain-text or Markdown reference from available page metadata.",
+      "source": "src/scripts/page-citation.js",
+      "file": "sources/definer-source-page-citation.json",
+      "exampleQuery": "a selected passage",
+      "network": false,
+      "guide": "https://lumetrium.com/definer/wiki/sources/script/catalog/page-citation"
+    },
+    {
+      "id": "unit-converter",
+      "kind": "script",
+      "category": "reading",
+      "name": "Unit Converter",
+      "description": "Convert length, mass, and temperature expressions while reading.",
+      "source": "src/scripts/unit-converter.js",
+      "file": "sources/definer-source-unit-converter.json",
+      "exampleQuery": "10 km to mi",
+      "network": false,
+      "guide": "https://lumetrium.com/definer/wiki/sources/script/catalog/unit-converter"
+    },
+    {
+      "id": "dictionary-api",
+      "kind": "script",
+      "category": "integrations",
+      "name": "Dictionary API",
+      "description": "A small English-definition integration to inspect and adapt to another API.",
+      "source": "src/scripts/dictionary-api.js",
+      "file": "sources/definer-source-dictionary-api.json",
+      "exampleQuery": "hello",
+      "network": true,
+      "guide": "https://lumetrium.com/definer/wiki/sources/script/catalog/dictionary-api"
+    },
+    {
+      "id": "context-inspector",
+      "kind": "script",
+      "category": "diagnostics",
+      "name": "Context Inspector",
+      "description": "Inspect the context available to a lookup when developing a source or reproducing an issue.",
+      "source": "src/scripts/context-inspector.js",
+      "file": "sources/definer-source-context-inspector.json",
+      "exampleQuery": "a word selected on a page",
+      "network": false,
+      "guide": "https://lumetrium.com/definer/wiki/sources/script/catalog/context-inspector"
+    },
+    {
+      "id": "collocations",
+      "kind": "prompt",
+      "category": "learning",
+      "name": "Collocations",
+      "description": "Explore natural word combinations and their usage.",
+      "source": "src/prompts/collocations.liquid",
+      "file": "prompts/definer-ai-prompt-collocations.json",
+      "exampleQuery": "decision",
+      "guide": "https://lumetrium.com/definer/wiki/sources/ai/prompts/"
+    },
+    {
+      "id": "conjugation",
+      "kind": "prompt",
+      "category": "learning",
+      "name": "Conjugation",
+      "description": "Understand a selected verb form and compare useful forms.",
+      "source": "src/prompts/conjugation.liquid",
+      "file": "prompts/definer-ai-prompt-conjugation.json",
+      "exampleQuery": "habríamos llegado",
+      "guide": "https://lumetrium.com/definer/wiki/sources/ai/prompts/"
+    },
+    {
+      "id": "mnemonic",
+      "kind": "prompt",
+      "category": "learning",
+      "name": "Mnemonic",
+      "description": "Create an explicitly invented memory aid for an expression.",
+      "source": "src/prompts/mnemonic.liquid",
+      "file": "prompts/definer-ai-prompt-mnemonic.json",
+      "exampleQuery": "gregarious",
+      "guide": "https://lumetrium.com/definer/wiki/sources/ai/prompts/"
+    }
+  ]
+}

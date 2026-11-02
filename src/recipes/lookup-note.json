@@ -1,0 +1,15 @@
+{
+  "name": "Save lookup note",
+  "group": "script",
+  "state": true,
+  "favorite": true,
+  "mappings": {
+    "type": "note",
+    "name": "{{ query }}",
+    "title": "{{ query }}",
+    "content": "<p>{{ data.note | default: '' | escape | newline_to_br }}</p>",
+    "sourceUrl": "{{ lookup.page.url | default: '' }}",
+    "data": "{{ data | json }}",
+    "tags": ["lookup-note"]
+  }
+}
